@@ -16,7 +16,7 @@ def simple():
 #Qu: What makes a class usable with "with"?
 #Ans: The presence of __enter__() and __exit__()methods
 
-class MyContextManager:
+class MyClassWhichCanBehaveAsAContextManager:
 
     # lots of other methods, if required
 
@@ -38,13 +38,16 @@ class MyContextManager:
 
 def my_context_manager():
 
-    with MyContextManager() as mine:
+    print ("\n---MyContextManager handling KeyError")
+    with MyClassWhichCanBehaveAsAContextManager() as mine:
+        print('mine variable is {}'.format(mine))
+        raise KeyError
+    print('.. and the program continues ..')
+    print ("\n--MyContextManager with another error")
+    with MyClassWhichCanBehaveAsAContextManager():
         raise ZeroDivisionError
-
-    # with MyContextManager() as mine:
-    #     raise KeyError
-
+    print('.. and the program does not continue ..')
 
 if __name__ == '__main__':
     simple()
-    #my_context_manager()
+    my_context_manager()
