@@ -16,7 +16,7 @@ def main():
 
 def execute_test_case(test_case_number):
         try:
-            tc_module = get_tc(test_case_number)
+            tc_module = get_test_case(test_case_number)
         except ImportError:
             print("Test case {} has not been defined".
                 format(test_case_number))
@@ -24,12 +24,13 @@ def execute_test_case(test_case_number):
             tc_module.main()
 
 
-def get_tc(test_case_number):
-    """Expects an integer which will be prefixed by tc, and
-        for that module to exist in tcs subdir.
-        Failure to find a test_case will raise an ImportError
+def get_test_case(number):
+    """Expects an test case number, which will then be
+        prefixed by tc, and return a reference to the correct module
+        in the tcs subdir.
+        Failure to find a module for this test_case will raise an ImportError
     """
-    module_name = 'tcs.tc{}'.format(test_case_number)
+    module_name = 'tcs.tc{}'.format(number)
     return importlib.import_module(module_name)
 
 
