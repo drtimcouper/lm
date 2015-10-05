@@ -33,7 +33,7 @@ class MyClassWhichCanBehaveAsAContextManager:
         print ('Returning from exit ...')
         if error_class in (KeyError, IndexError):
             print ("Got them thar errors")
-            return True  # setting True here signals that exception is not to be raised
+            return True  # True means that the exception is not to be raised
 
 
 def my_context_manager():
@@ -42,10 +42,12 @@ def my_context_manager():
     with MyClassWhichCanBehaveAsAContextManager() as mine:
         print('mine variable is {}'.format(mine))
         raise KeyError
+
     print('.. and the program continues ..')
     print ("\n--MyContextManager with another error")
     with MyClassWhichCanBehaveAsAContextManager():
         raise ZeroDivisionError
+
     print('.. and the program does not continue ..')
 
 if __name__ == '__main__':
