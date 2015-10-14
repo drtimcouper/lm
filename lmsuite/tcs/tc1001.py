@@ -1,3 +1,3 @@
 
 def main():
-    print ("running tc1001 ...")
+    print("running tc1001 ...")

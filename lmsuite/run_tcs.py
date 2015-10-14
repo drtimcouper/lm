@@ -8,7 +8,7 @@ import importlib
 def main():
     "simulate a calling program"
     while True:
-        test_case_number = input("?")
+        test_case_number = input("<q to quit>?")
         if test_case_number.lower() == 'q':
             break
         execute_test_case(test_case_number)
@@ -36,4 +36,3 @@ def get_test_case(number):
 
 if __name__ == '__main__':
     main()
-
