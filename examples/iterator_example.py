@@ -1,7 +1,7 @@
 
 #Qu: What makes a class usable as an iterator??
 #Ans: The presence of  __iter__() & __next__() method
-class MyClass:
+class AClassWhichCanBehaveAsAnIterator:
 
     def __init__(self, stuff):
         self.stuff = stuff
@@ -17,13 +17,13 @@ class MyClass:
 
 def basic():
     stuff = [1, 'a', (1,2), {1:2, 'a': 'another'}]
-    m = MyClass(stuff)
+    m = AClassWhichCanBehaveAsAnIterator(stuff)
     print (m.__next__())
 
 
 def main():
     stuff = [1, 'a', (1,2), {1:2, 'a': 'another'}]
-    m = MyClass(stuff)
+    m = AClassWhichCanBehaveAsAnIterator(stuff)
     for value in m:
         print (value)
 
