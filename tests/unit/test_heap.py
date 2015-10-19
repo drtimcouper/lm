@@ -9,13 +9,16 @@ def test_constructor_ok():
     assert_true(isinstance(h, heap.Heap))
 
 
-def test_constructor_size_not_floatable():
+def test_constructor_size_not_int():
     with assert_raises(ValueError):
         heap.Heap('junk')
 
+    with assert_raises(heap.NotPositiveIntegerError):
+        heap.Heap(12.3)
+
 
 def test_constructor_size_negative():
-    with assert_raises(heap.NegativeSizeError):
+    with assert_raises(heap.NotPositiveIntegerError):
         heap.Heap(-1)
 
 
@@ -60,7 +63,7 @@ def test_sub_ok():
 def test_sub_negative():
     h1 = heap.Heap(11)
     h2 = heap.Heap(24)
-    with assert_raises(heap.NegativeSizeError):
+    with assert_raises(heap.NotPositiveIntegerError):
        h1 - h2
 
 

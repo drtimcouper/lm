@@ -1,9 +1,16 @@
+
+class NotPositiveIntegerError(Exception):
+    pass
+
+
 class Heap:
+    """A Heap of countable objects"""
 
     def __init__(self, size):
+        if not float(size).is_integer() \
+          or int(size) < 0:
+            raise NotPositiveIntegerError("Size must be positive ('{}' found)".format(size))
         self.size = int(size)
-        if self.size < 0:
-            raise NegativeSizeError
 
     def __str__(self):
         return 'A heap of size {}'.format(self.size)
@@ -45,18 +52,13 @@ class Heap:
     # of the operator.
 
 
-
-class NegativeSizeError(Exception):
-    pass
-
-
 def invalid_op(other):
     # use the standard python type mismatch error
     s = "unsupported operand type(s) for -: 'Heap' and '{}'".format(
         type(other).__name__)
     raise TypeError(s)
 
-if __name__ == '__main__':
+if __name__ == '__main__':   # pragma: no cover
     h1 = Heap(10)
     h2 = Heap(20)
     h3 =  h1 + 2
