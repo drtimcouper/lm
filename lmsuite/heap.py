@@ -33,8 +33,14 @@ class Heap:
             return self.size == other.size
         invalid_op(other)
 
+    def __iadd__(self, other):
+        if isinstance(other, int):
+            return Heap(self.size + other)
+        else:
+            return self.__add__(other)
+
     # it might seem obvious that python can "work out" value of __ne__
-    # however we must be explicit (as not __eq__ will NOT be called otherwise)
+    # however we must be explicit (as as != is NOT necessarily the opposite of ==)
     def __ne__(self, other):
         return not self.__eq__(other)
 

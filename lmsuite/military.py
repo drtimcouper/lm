@@ -1,7 +1,4 @@
 class Gun:
-    def __init__(self, name):
-        self.name = name
-
     def fire(self):
         print('Bang')
 
@@ -15,19 +12,33 @@ class Vehicle:
             self.__class__.__name__,
             self.make, self.color)
 
+    def start(self):
+        print ('Brrrm, brrrm')
+
 
 class Car(Vehicle):
     pass
 
 
-class Tank(Car, Gun):
-    pass
+class ArmouredCar(Car, Gun):
+    # choose to override the definition of start()
+    def start(self):
+        print ('Cough, splutter')
+
 
 if __name__ == '__main__':
-    # g = Gun('S&W')
-    # print(g.name)
-    # g.fire()
+    g = Gun()
+    g.fire()
 
-    v = Tank('T34', 'Russian grey')
-    print (v)
-    v.fire()
+    # I can add arbitrary attributes if I *really* want to:
+    # g.registered = True
+    # print(g.registered)
+
+    # c = Car('Ford','green')
+    # print(c)
+    # c.start()
+
+    # v = ArmouredCar('BA-10', 'Russian grey')
+    # print (v)
+    # v.start()
+    # v.fire()

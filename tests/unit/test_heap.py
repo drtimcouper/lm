@@ -52,6 +52,7 @@ def test_invalid_op_ok():
     assert_equals(str(err.exception),
                 "unsupported operand type(s) for -: 'Heap' and 'str'")
 
+
 def test_sub_ok():
     h1 = heap.Heap(11)
     h2 = heap.Heap(23)
@@ -71,6 +72,27 @@ def test_sub_junk():
     h1 = heap.Heap(11)
     with assert_raises(TypeError):
        h1 - 23
+
+
+def test_iadd_heap():
+    h1 = heap.Heap(11)
+    h2 = heap.Heap(5)
+    h1 += h2
+    expected = heap.Heap(16)
+    assert_equals(expected, h1)
+
+
+def test_iadd_int():
+    h1 = heap.Heap(11)
+    h1 += 5
+    expected = heap.Heap(16)
+    assert_equals(expected, h1)
+
+
+def test_iadd_junk():
+    h1 = heap.Heap(11)
+    with assert_raises(TypeError):
+        h1 += 'junk'
 
 
 def test_eq_ok():
