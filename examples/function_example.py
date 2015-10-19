@@ -13,11 +13,17 @@ def f3(*args):
     #return a tuple with the arguments in reverse order
     return args[::-1]
 
+
 def f4(**kwargs):
     return list(sorted(zip(kwargs.keys(), kwargs.values())))
 
+
 def f5(*a, **k):
     return list(a[::-1]) + sorted(list(k.keys()))
+
+
+def f1plus(a,b):
+    return a+b, a-b
 
 
 if __name__== '__main__':
@@ -55,3 +61,10 @@ if __name__== '__main__':
     d = {'2': 'number 2'}
     res = f5(1,2, *tup, y='not', z='snooze', **d)
     assert res == ['5a', 14, 2, 1, '2', 'y', 'z'], res
+
+    #f1plus --
+    res = f1plus(5,2)
+    assert res == (7,3)
+    mysum, mydiff = f1plus(5,2)
+    assert mysum == 7
+    assert mydiff == 3
