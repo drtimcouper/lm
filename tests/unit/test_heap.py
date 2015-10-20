@@ -137,5 +137,3 @@ def test_le_ok():
     assert_true(h1 <= h1)
     h0 = heap.Heap(5)
     assert_true(h0 <= h1)
-
-

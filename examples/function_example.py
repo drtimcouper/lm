@@ -10,7 +10,7 @@ assert res == 5
 res = f1('hello ', 'world')
 assert res == 'hello world'
 
-'''
+'
 def f2(a,b=4):
     return a+b
 
@@ -60,4 +60,3 @@ assert res == (7,3)
 mysum, mydiff = f1plus(5,2)
 assert mysum == 7
 assert mydiff == 3
-'''
